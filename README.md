@@ -33,3 +33,17 @@ POST /confirm → idempotency check → atomic hold-extend (Lua) → payment
 docker compose up -d
 mvn spring-boot:run
 ```
+
+## Apis
+```
+curl -X POST http://localhost:8080/api/v1/movies -H "Content-Type: application/json" \
+-d '{"title":"Interstellar","durationMinutes":169,"language":"English","genre":"Sci-Fi"}'
+
+curl http://localhost:8080/api/v1/shows/show-1/seats
+
+curl -X POST http://localhost:8080/api/v1/bookings/hold -H "Content-Type: application/json" \
+-d '{"showId":"show-1","seatIds":["seat-A1"],"userId":"user-42"}'
+
+curl -X POST http://localhost:8080/api/v1/bookings/confirm -H "Content-Type: application/json" \
+-d '{"showId":"show-1","seatIds":["seat-A1"],"userId":"user-42","idempotencyKey":"abc-123"}'
+```
