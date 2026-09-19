@@ -34,7 +34,7 @@ docker compose up -d
 mvn spring-boot:run
 ```
 
-## Apis
+## Example
 ```
 curl -X POST http://localhost:8080/api/v1/movies -H "Content-Type: application/json" \
 -d '{"title":"Interstellar","durationMinutes":169,"language":"English","genre":"Sci-Fi"}'
